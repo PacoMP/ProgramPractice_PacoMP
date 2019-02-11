@@ -1,0 +1,7 @@
+for file in ./source/*/; do
+  cp ./mondial.* ./"$file"
+done
+
+cp -as "$(pwd)/SOURCE/" COPY
+
+cp -as "$(pwd)/Oracle/" "/Users/pacomp/Documents/ProgramPractice/try"
