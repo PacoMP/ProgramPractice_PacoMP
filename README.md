@@ -1,2 +1,2 @@
 # ProgramPractice_PacoMP
-Persona program practice repo
+Personal program practice repo
