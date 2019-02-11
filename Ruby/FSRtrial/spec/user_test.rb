@@ -1,5 +1,4 @@
 require_relative '../app/user'
-require 'set'
 require 'rspec'
 
 RSpec.describe User do
@@ -9,6 +8,8 @@ RSpec.describe User do
     expect(user.skills.length).to eq 1
     expect(user.skills).to include 'Driver'
 end
+
+
 
   it 'has no rpeated skills' do
     user = User.new('Jhon','pmp@hotmail.com','')

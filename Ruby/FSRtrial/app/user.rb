@@ -1,14 +1,14 @@
 class User
 require 'set'
 
-  attr_accessor :name, :email, :password, :roles, :skills, :availabulity
+  attr_accessor :name, :email, :password, :roles, :skills, :availabulity, :id
 
   def initialize (name,email,password)
     @name = name
     @email = email
     @password = password
     #@roles = roles #int?
-    @skills = Set.new() 
+    @skills = Set.new()
     #@availability = availability #boolean
   end
 
