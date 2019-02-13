@@ -41,7 +41,7 @@ def add_skills
     puts input
     if input.is_a? Numeric #&& is in range ()
       puts skills_database[input.to_i]
-      @current_user.input_skill(skills_database[input.to_i])
+      @current_user.add_skill(skills_database[input.to_i])
     else
       puts 'Invalid character '
     end
