@@ -25,8 +25,9 @@ class UserDatabase
     @database
   end
 
-  def auth?(email,password)
-    true if find_by_email(email).password == password
+  def authenticate(email,password)
+    auth_user = find_by_email(email)
+    auth_user if auth_user&.password == password  
   end
 
 end

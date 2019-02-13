@@ -33,16 +33,17 @@ def add_skills
   input = ''
   while input != 'Exit'
     puts 'Select skills from the list to add'
-    skills.each_with_index do |skill,index|
+    skills_database.each_with_index do |skill,index|
       puts  "#{index} .- #{skill}"
     end
     puts 'Exit'
-    input = gets.chomp
-
-    if input.is_a? Numeric
-      @current_user.skills << skills[input.to_i - 1]
+    input = gets.chomp.to_i
+    puts input
+    if input.is_a? Numeric #&& is in range ()
+      puts skills_database[input.to_i]
+      @current_user.input_skill(skills_database[input.to_i])
     else
-      (puts 'Invlaid character ')
+      puts 'Invalid character '
     end
 
   end

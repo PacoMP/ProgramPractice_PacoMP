@@ -63,7 +63,6 @@ RSpec.describe UserDatabase do
       user_database = UserDatabase.new
       user1 = User.new('Jhon','pmp@hotmail.com','password')
       user_database.store(user1)
-
-      expect(user_database.authenticate("does@not.exist", user1.password)).to eq nil
+      expect(user_database.authenticate("does@not.exist", 'password')).to eq nil
     end
 end
