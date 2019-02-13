@@ -3,6 +3,7 @@ require 'artii'
 require 'faker'
 
 require_relative 'user'
+require_relative 'user_database'
 require_relative 'station'
 
 def loggedin_menu
@@ -49,13 +50,14 @@ def add_skills
   puts @current_user
 end
 
-user_database = []
+user_database = UserDatabase.new
+
 5.times do
   complete_name = (Faker::Name.first_name) + ' ' + (Faker::Name.last_name)
-  user_database.append(FF.new(complete_name, Faker::Internet.email, '', '', Set.new, ''))
+  user_database.store(User.new(complete_name, Faker::Internet.email, ''))
 end
 
-puts user_database
+puts user_database.database
 
 a = Artii::Base.new :font => 'slant'
 puts a.asciify('Welcome to FSR!')
@@ -77,15 +79,11 @@ when '1' then
   puts 'Please enter your password'
   password = gets.chomp
 
-  @current_user = user_database.find {|ff|
-            email == ff.email && password == ff.password
-           }
-
-  if @current_user
-    puts 'Login successful!!!'
+  if @current_user = user_database.authenticate(email,password)
+    puts "Login successful"
     loggedin_menu
   else
-    puts 'Your email and/or password do not match'
+    puts 'Your email or password do not match'
   end
 
 when '2' then
@@ -95,10 +93,14 @@ when '2' then
   new_email = gets.chomp
   puts 'Enter a password for your new account'
   new_password = gets.chomp
-  user_database.append(FF.new(new_name,new_email,new_password,'',[],''))
-  puts "#{user_database[-1].name} your account with the email #{user_database[-1].email} has been created succesfully!"
+
+  if user_database.store(User.new(new_name,new_email,new_password))
+    puts "#{user_database.find_by_email(new_email).name} your account with the email #{user_database.find_by_email(new_email).email} has been created succesfully!"
+  else
+    puts "This email is already registered"
   sleep(5)
-  puts user_database
+  end
+  #puts user_database.database
 end
 
 

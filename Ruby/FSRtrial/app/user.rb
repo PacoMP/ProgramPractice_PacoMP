@@ -13,7 +13,7 @@ require 'set'
   end
 
   def to_s
-    "Firefighter: #{@name}
+    "Name: #{@name}
      Email: #{@email}
      Roles: #{@roles}
      Skills #{@skills}
