@@ -8,7 +8,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 
 **Bold** and _Italic_ and `Code` text
 
-<a href="Python/Semanai/Dia2/problem1_3.py" download>Download file</a>
+<a href="Python/Semanai/Dia2/problem1_3.py" download="download">Download file</a>
 
 ### Jekyll Themes
 
